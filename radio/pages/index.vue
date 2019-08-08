@@ -2,40 +2,48 @@
   <div class="container">
     <div>
       <logo />
-      <h1 class="title">
-        radio
-      </h1>
-      <h2 class="subtitle">
-        My finest Nuxt.js project
-      </h2>
+      <h1 class="title">radio</h1>
+      <h2 class="subtitle">My finest Nuxt.js project</h2>
       <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+        <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
+        <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Logo from "~/components/Logo.vue";
+import { createClient } from "~/plugins/contentful.js";
+
+const client = createClient();
 
 export default {
   components: {
     Logo
+  },
+
+  asyncData({ env }) {
+    return Promise.all([
+      client.getEntries({
+        "sys.id": env.CTF_PERSON_ID
+      }),
+      client.getEntries({
+        content_type: env.CTF_BLOG_POST_TYPE_ID,
+        order: "-sys.createdAt"
+      })
+    ])
+      .then(([entries, posts]) => {
+        console.log('entries: ', entries)
+        console.log('posts: ', posts)
+        return {
+          person: entries,
+          posts: posts
+        };
+      })
+      .catch(console.error);
   }
-}
+};
 </script>
 
 <style>
@@ -49,8 +57,8 @@ export default {
 }
 
 .title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
