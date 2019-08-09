@@ -8,6 +8,9 @@
         <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
         <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
       </div>
+      <ul>
+        <li v-for="item in posts" :key="item.sys.id">{{ item.fields.title }}</li>
+      </ul>
     </div>
   </div>
 </template>
@@ -22,7 +25,6 @@ export default {
   components: {
     Logo
   },
-
   asyncData({ env }) {
     return Promise.all([
       client.getEntries({
@@ -34,11 +36,10 @@ export default {
       })
     ])
       .then(([entries, posts]) => {
-        console.log('entries: ', entries)
-        console.log('posts: ', posts)
+        console.log("posts: ", posts.items);
         return {
-          person: entries,
-          posts: posts
+          person: entries.items[0],
+          posts: posts.items
         };
       })
       .catch(console.error);

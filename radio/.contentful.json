@@ -1,6 +1,9 @@
 {
-    "CTF_PERSON_ID": "15jwOBqpxqSAOy2eOO4S0m",
-    "CTF_BLOG_POST_TYPE_ID": "blogPost",
-    "CTF_SPACE_ID": "7x1fplsxm9ev",
-    "CTF_CDA_ACCESS_TOKEN": "mDeudJVo2ws8eIUhpd8_kJ37YKz_L3DmCRklX-XOJvU"
+  "CURRENT_ENVIRONMENT": "production",
+  "CTF_PERSON_ID": "15jwOBqpxqSAOy2eOO4S0m",
+  "CTF_BLOG_POST_TYPE_ID": "blogPost",
+  "CTF_SPACE_ID": "7x1fplsxm9ev",
+  "CTF_CDA_ACCESS_TOKEN": "mDeudJVo2ws8eIUhpd8_kJ37YKz_L3DmCRklX-XOJvU",
+  "CTF_CDA_PREVIEW_ACCESS_TOKEN": "Qur5nrib_lUfBVCwvxhCgzYRrSsnjirlayl72I--yos",
+  "CTF_CDA_PREVIEW_HOST": "preview.contentful.com"
 }

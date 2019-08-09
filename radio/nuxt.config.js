@@ -19,10 +19,13 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   env: {
+    CURRENT_ENVIRONMENT: config.CURRENT_ENVIRONMENT,
     CTF_SPACE_ID: config.CTF_SPACE_ID,
     CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN,
     CTF_PERSON_ID: config.CTF_PERSON_ID,
-    CTF_BLOG_POST_TYPE_ID: config.CTF_BLOG_POST_TYPE_ID
+    CTF_BLOG_POST_TYPE_ID: config.CTF_BLOG_POST_TYPE_ID,
+    CTF_CDA_PREVIEW_ACCESS_TOKEN: config.CTF_CDA_PREVIEW_ACCESS_TOKEN,
+    CTF_CDA_PREVIEW_HOST: config.CTF_CDA_PREVIEW_HOST
   },
   /*
    ** Customize the progress-bar color
